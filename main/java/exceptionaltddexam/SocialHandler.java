@@ -11,11 +11,17 @@ public class SocialHandler {
     }
 
     public boolean checkHandle(String handle) {
-        if (handle != null && handle != "" && handle.substring(handle.length() - 1).equals(handle.substring(handle.length() - 1).toLowerCase())) {
-            System.out.println("This is a good handle");
-            return true;
-        } else {
-            System.out.println("This handle doesn't work");
+        try{
+            if (handle != "" && handle.substring(handle.length() - 1).equals(handle.substring(handle.length() - 1).toLowerCase())) {
+                System.out.println("This is a good handle");
+                return true;
+            } else {
+                System.out.println("This handle doesn't work");
+                return false;
+            }
+        }
+        catch(NullPointerException e){
+            System.out.println("Value is null.");
             return false;
         }
     }
