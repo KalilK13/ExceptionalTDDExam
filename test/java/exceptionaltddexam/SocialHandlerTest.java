@@ -72,7 +72,7 @@ class SocialHandlerTest {
     @DisplayName("To check if social media handle input is null")
     void checkIfNullTest() {
         SocialHandler socialHandler = new SocialHandler();
-        assertThrows(NullPointerException.class, ()-> socialHandler.checkHandle(null));
+        assertFalse(socialHandler.checkHandle(null));
     }
 
 
@@ -80,6 +80,7 @@ class SocialHandlerTest {
     @DisplayName("To check if social media handle is empty or blank")
     void checkEmptyOrBlankCharactersTest(){
         SocialHandler socialHandler = new SocialHandler();
+        assertFalse(socialHandler.checkHandle(" "));
 
     }
     @Test

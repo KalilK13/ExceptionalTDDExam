@@ -15,9 +15,9 @@ public class SocialHandler {
         return handleList;
     }
 
-    public boolean checkHandle(String handle) {
+    public boolean checkHandle(String handle){
 //        try{
-            if (handle != "" && handle != null) {
+            if (handle != "" && handle != null && !handle.trim().equals("")) {
 //                System.out.println("This is a good handle");
                 return true;
             } else {
