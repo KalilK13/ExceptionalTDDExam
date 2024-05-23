@@ -12,7 +12,10 @@ public class Main {
         socialHandler.addHandle(handle2);
         socialHandler.addHandle(handle3);
 
+        socialHandler.removeHandle("@Dan Lake");
+
         socialHandler.addSocialMediaHandlesToFile();
         socialHandler.printSocialMediaHandleFromFile();
+
     }
 }

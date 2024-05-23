@@ -47,7 +47,7 @@ class SocialHandlerTest {
 
         ArrayList<String> actual = socialHandler.getHandleList();
         ArrayList<String> expected = new ArrayList<>();
-        expected.add("@" + handle.substring(0,9));
+        expected.add("@" + handle.substring(0,9).toLowerCase());
 
         assertEquals(expected, actual);
     }
@@ -138,14 +138,14 @@ class SocialHandlerTest {
         socialHandler.addHandle(handle1);
         socialHandler.addHandle(handle2);
         socialHandler.addHandle(handle3);
-        String updatedHandle = "Danny";
+        String updatedHandle = "@Danny";
 
         socialHandler.updateHandle(handle2,updatedHandle);
 
         ArrayList<String> actual = socialHandler.getHandleList();
         ArrayList<String> expected = new ArrayList<>();
         expected.add("@" + handle1.substring(0,9).toLowerCase());
-        expected.add("@" + updatedHandle.toLowerCase());
+        expected.add(updatedHandle.toLowerCase());
         expected.add("@" + handle3.substring(0,9).toLowerCase());
 
         assertEquals(expected, actual);

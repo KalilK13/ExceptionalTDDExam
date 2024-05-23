@@ -55,7 +55,7 @@ public class SocialHandler {
         }
     }
     public void removeHandle(String handle){
-        if(handle.substring(0,1) != "@"){
+        if(!handle.substring(0,1).equals("@")){
             handle = "@" + handle;
         }
 //        handleList.remove(handle);
@@ -67,13 +67,16 @@ public class SocialHandler {
     }
     public void updateHandle(String handle, String udatedHandle){
         if(checkHandle(handle)) {
-            if(handle.substring(0,1) != "@"){
+            if(!handle.substring(0,1).equals("@")){
                 handle = "@" + handle;
             }
             for (int i = 0; i < handleList.size(); i++) {
                 if (handleList.get(i).equalsIgnoreCase(handle)) {
                     handleList.remove(i);
-                    handleList.add(i, "@" + udatedHandle.toLowerCase());
+                    if(!udatedHandle.substring(0,1).equals("@")){
+                        udatedHandle = "@" + udatedHandle;
+                    }
+                    handleList.add(i, udatedHandle.toLowerCase());
                 }
             }
         }
