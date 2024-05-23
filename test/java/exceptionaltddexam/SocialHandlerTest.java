@@ -14,8 +14,8 @@ class SocialHandlerTest {
        SocialHandler socialHandler = new SocialHandler();
        String handle = "mikejones";
 //
-       boolean actual = socialHandler.checkHandle(handle);
-       boolean expected = true;
+       boolean actual = socialHandler.checkHandle(null);
+       boolean expected = false;
 //
        assertEquals(expected, actual);
 
@@ -97,10 +97,57 @@ class SocialHandlerTest {
 
         ArrayList<String> actual = socialHandler.getHandleList();
         ArrayList<String> expected = new ArrayList<>();
-        expected.add("@" + handle1.substring(0,9));
+        expected.add("@" + handle1.substring(0,9).toLowerCase());
 
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("Remove handle from handleList")
+    void removeHandleTest(){
+        SocialHandler socialHandler = new SocialHandler();
+
+        String handle1 = "Mike jones";
+        String handle2 = "Dan Lake";
+        String handle3 = "Sasha Jackson";
+
+        socialHandler.addHandle(handle1);
+        socialHandler.addHandle(handle2);
+        socialHandler.addHandle(handle3);
+
+        socialHandler.removeHandle(handle2);
+
+        ArrayList<String> actual = socialHandler.getHandleList();
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("@" + handle1.substring(0,9).toLowerCase());
+        expected.add("@" + handle3.substring(0,9).toLowerCase());
+
+        assertEquals(expected, actual);
+
+    }
+    @Test
+    @DisplayName("Update given handle with new handle")
+    void updateHandleTest(){
+        SocialHandler socialHandler = new SocialHandler();
+
+        String handle1 = "Mike jones";
+        String handle2 = "Dan Lake";
+        String handle3 = "Sasha Jackson";
+
+        socialHandler.addHandle(handle1);
+        socialHandler.addHandle(handle2);
+        socialHandler.addHandle(handle3);
+        String updatedHandle = "Danny";
+
+        socialHandler.updateHandle(handle2,updatedHandle);
+
+        ArrayList<String> actual = socialHandler.getHandleList();
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("@" + handle1.substring(0,9).toLowerCase());
+        expected.add("@" + updatedHandle.toLowerCase());
+        expected.add("@" + handle3.substring(0,9).toLowerCase());
+
+        assertEquals(expected, actual);
+    }
 
 }
